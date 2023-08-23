@@ -16,7 +16,7 @@
         <form onsubmit="return nameSubmit(event)">
         <div><input class="teamA" required type="text" placeholder="Team A"></div>
         <div><input class="teamB" required type="text" placeholder="Team b"></div>
-        <div><input class="winPoint" value="60" type="number" placeholder="Points Need To Win"></div>
+        <div><input class="winPoint" required type="number" placeholder="Points Need To Win"></div>
         <button class="btn-set-team-name" type="submit">Set Team</button>
       </form>
       </div>
@@ -34,12 +34,12 @@
             <div class="teamA">
               <h3>Team A</h3>
               <hr>
-              <input max="13" type="number" required placeholder="Score">
+              <input type="number" required placeholder="Score">
             </div>
             <div class="teamB">
               <h3>Team B</h3>
               <hr>
-              <input max="13" type="number" required placeholder="Score">
+              <input type="number" required placeholder="Score">
             </div>
           </div>
           <button class="add-point-submit-btn" type="submit">Submit Score</button>
