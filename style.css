@@ -5,6 +5,7 @@ body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(45deg, rgba(57, 15, 63, 0.973), rgb(26, 41, 54) , rgba(4, 31, 82, 0.986));
+  font-family: sans-serif;
 }
 
 form,
@@ -186,6 +187,10 @@ button:disabled {
   border: 1px solid rgba(67, 172, 214, 0.74);
   border-radius: 10px;
   padding: 20px;
+  background-image: url('./bg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .teamNameA, .teamNameB {
