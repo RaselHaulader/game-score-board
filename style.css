@@ -1,0 +1,198 @@
+
+body {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, rgba(57, 15, 63, 0.973), rgb(26, 41, 54) , rgba(4, 31, 82, 0.986));
+}
+
+form,
+h2,
+h3 {
+  text-align: center;
+}
+
+.form-container {
+  padding: 30px 30px 20px;
+  color: whitesmoke;
+  border-radius: 20px;
+  height: 80%;
+  width: 80%;
+  background: linear-gradient(45deg, rgb(31, 16, 119), rgb(87, 9, 139));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+@media screen and (min-width: 750px) {
+  .form-container {
+    width: 50%;
+  }
+}
+
+input {
+  border: none;
+  color: rgb(155, 232, 255);
+  background-color: transparent;
+  border-bottom: 1px solid rgb(222, 227, 230);
+}
+
+input::placeholder {
+  color: rgba(155, 232, 255, 0.589);
+}
+
+input:focus {
+  outline: none;
+}
+
+.result-section {
+  text-align: center;
+}
+
+button {
+  border: none;
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background: linear-gradient(45deg, rgba(43, 240, 164, 0.938), rgb(87, 179, 233));
+  color: rgb(2, 2, 2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:disabled {
+ background: linear-gradient(45deg, rgba(206, 206, 206, 0.87), rgb(128, 128, 128));;
+ opacity: 0.5;
+}
+#warning {
+  text-align: center;
+}
+
+.reset-game-btn {
+  background-color: rgba(221, 203, 240, 0.76);
+}
+
+#back {
+  display: none;
+}
+
+.team-names {
+  border: 1px solid rgba(67, 172, 214, 0.74);
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.team-name-container {
+  width: 80%;
+  margin: auto;
+
+}
+
+.none {
+  display: none !important;
+}
+
+.team-name-container hr {
+  background-color: red;
+}
+
+.team-name-container input {
+  margin-top: 30px;
+}
+
+.score-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.score-container .team {
+  width: 45%;
+}
+
+.score-container .divider {
+  background-color: rgba(184, 184, 184, 0.719);
+  width: 2px;
+  color: transparent;
+  margin-top: 25px;
+}
+
+.add-point-field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.battle-icon {
+  color: red;
+  font-size: 20px;
+}
+
+.add-point-field-container {
+  margin-top: 20px;
+  border-radius: 10px;
+  max-height: 0;
+  transition: all 0.3s ease-in;
+  overflow: hidden;
+}
+
+.add-point-field-container.open {
+  padding: 20px;
+  border: 1px solid rgba(67, 172, 214, 0.74);
+  max-height: 160px;
+}
+
+.add-point-field > div {
+  width: 45%;
+}
+
+.add-point-field input {
+  margin-top: 15px;
+  width: 80%;
+}
+
+.lock-field {
+  margin-right: 10px;
+  position: relative;
+}
+
+.lock-field .lock-field-btn {
+  cursor: pointer;
+  position: absolute;
+  top: -24px;
+  right: 10px;
+}
+
+.lock-field .field-close {
+  padding: 3px;
+  background: linear-gradient(45deg, rgba(240, 31, 31, 0.979), rgb(199, 58, 255));
+  border-radius: 45%;
+}
+
+.lock-field .field-open {
+  padding: 3px;
+  border-radius: 45%;
+  background: linear-gradient(45deg, rgb(19, 226, 64), rgb(11, 95, 221));
+}
+
+.total-point-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.winner-show-container {
+  margin-top: 10px;
+  border: 1px solid rgba(67, 172, 214, 0.74);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.teamNameA, .teamNameB {
+  text-transform: capitalize;
+}
+
+.copyright {
+  font-family: monospace, sans-serif;
+  color: rgba(70, 180, 166, 0.36);
+}

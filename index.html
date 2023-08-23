@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Score Board</title>
+</head>
+
+<body>
+  <div class="form-container">
+    <div class="team-name-container">
+      <h2>Set Team Name</h2>
+      <div class="team-names">
+        <form onsubmit="return nameSubmit(event)">
+        <div><input class="teamA" required type="text" placeholder="Team A"></div>
+        <div><input class="teamB" required type="text" placeholder="Team b"></div>
+        <div><input class="winPoint" value="60" type="number" placeholder="Points Need To Win"></div>
+        <button class="btn-set-team-name" type="submit">Set Team</button>
+      </form>
+      </div>
+    </div>
+
+    <div class="score-board none">
+      <h2><span class="teamA">Team A</span> <span class="battle-icon">⚔</span> <span class="teamB">Team B</span></h2>
+      <hr>
+      <div class="add-point-container">
+        <button class="add-point-btn">Add Point</button>
+
+        <div class="add-point-field-container">
+          <form onsubmit="return updatePoint(event)">
+          <div class="add-point-field">
+            <div class="teamA">
+              <h3>Team A</h3>
+              <hr>
+              <input max="13" type="number" required placeholder="Point">
+            </div>
+            <div class="teamB">
+              <h3>Team B</h3>
+              <hr>
+              <input max="13" type="number" required placeholder="Point">
+            </div>
+          </div>
+          <button class="add-point-submit-btn" type="submit">Submit Point</button>
+          <div class="lock-field">
+            <span class="lock-field-btn">
+              <span class="field-open">🔓</span>
+              <span class="field-close none">🔒</span>
+            </span>
+          </div>
+        </form>
+        </div>
+      </div>
+
+      <div class="score-container none">
+        <div class="teamA team">
+          <h3>Team A</h3>
+          <hr>
+          <div class="points">
+            <p class="teamA-score-part">➡</p>
+          </div>
+          <hr>
+          <p class="total-point-container">
+            <span>Total:</span> 
+            <span>
+              <span class="total-point-a">0</span>
+              <span class="total-point"></span></p>
+            </span>
+        </div>
+        <div class="divider">.</div>
+        <div class="teamB team">
+          <h3>Team B</h3>
+          <hr>
+          <div class="points">
+            <p class="teamB-score-part">➡</p>
+          </div>
+          <hr>
+          <p class="total-point-container">
+            <span>Total:</span>
+            <span>
+              <span class="total-point-b">0</span>
+              <span class="total-point"></span></p>
+            </span>
+        </div>
+      </div>
+      <button class="reset-game-btn">❌</button>
+    </div>
+    <div class="winner-show-container none">
+      <h1><span class="winner-team-name">Team A</span> is Winner</h1>
+      <button class="reset-button">Play Again</button>
+    </div>
+    <p class="copyright"><small>developed by Rasel</small></p>
+  </div>
+  <script src="./script.js"></script>
+</body>
+
+</html>
