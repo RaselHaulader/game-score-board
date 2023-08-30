@@ -96,11 +96,9 @@ const saveHistory = (teamA, teamAScore, teamB,teamBScore, winner) => {
   }
   const prevData = JSON.parse(localStorage.getItem('score-board-history') || '[]');
   let data = [...prevData];
-  console.log(data.length)
   if (data.length > 100) {
     data.splice(0, data.length - 100);
   }
-  console.log(data.length)
   data.push(historyData)
   localStorage.setItem('score-board-history', JSON.stringify(data));
 }
