@@ -1,13 +1,13 @@
 // Save data to localStorage
 const saveData = (key, value) => {
-  const prevData = JSON.parse(localStorage.getItem('card-points'));
+  const prevData = JSON.parse(localStorage.getItem('score-board'));
   const data = {...prevData};
   data[key] = value;
-  localStorage.setItem('card-points', JSON.stringify(data));
+  localStorage.setItem('score-board', JSON.stringify(data));
 }
 
 const getData = (key) => {
-  const data = JSON.parse(localStorage.getItem('card-points'));
+  const data = JSON.parse(localStorage.getItem('score-board'));
   if(!data) return;
   return data[key];
 }
@@ -78,8 +78,29 @@ let teamBScore = getData('teamBScore') ? getData('teamBScore') : 0;
 let teamAScorePart = getData('teamAScorePart') ? getData('teamAScorePart') : '➡';
 let teamBScorePart = getData('teamBScorePart') ? getData('teamBScorePart') : '➡';
 
+const saveHistory = (teamA, teamAScore, teamB,teamBScore, winner) => { 
+  function getCurrentDate() {
+    const now = new Date();
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    const formattedDate = now.toLocaleDateString('en-US', options);
+    return formattedDate;
+  }  
+  const currentDate = getCurrentDate();
+  const historyData = {
+    teamA,
+    teamAScore,
+    teamB,
+    teamBScore,
+    winner,
+    currentDate
+  }
+  const prevData = JSON.parse(localStorage.getItem('score-board-history') || '[]');
+  const data = [...prevData];
+  data.push(historyData)
+  localStorage.setItem('score-board-history', JSON.stringify(data));
+}
+
 const savePoint = () => {
-  
   const teamAScoreValue = parseInt(document.querySelector('.add-point-field-container .teamA input').value ? document.querySelector('.add-point-field-container .teamA input').value : 0)
   const teamBScoreValue = parseInt(document.querySelector('.add-point-field-container .teamB input').value ? document.querySelector('.add-point-field-container .teamB input').value : 0);
 
@@ -100,22 +121,54 @@ const savePoint = () => {
 
   saveData('teamAScorePart', teamAScorePart);
   saveData('teamBScorePart', teamBScorePart);
-
+  
   if (teamAScore >= winPoint && teamBScore >= winPoint ) {
     document.querySelector('.score-board').classList.add('none');
     document.querySelector('.winner-show-container').classList.remove('none');
     document.querySelector('.winner-show-container h1').textContent = "Match Draw";
+    document.querySelector('.winner-show-container .summery-teamA').textContent = teamA +": "+ teamAScorePart +"= " + teamAScore;
+    document.querySelector('.winner-show-container .summery-teamB').textContent = teamB +": "+ teamBScorePart +"= " + teamBScore;
+    saveHistory(teamA, teamAScore, teamB, teamBScore, 'draw');
   } else if(teamAScore >= winPoint) {
     document.querySelector('.score-board').classList.add('none');
     document.querySelector('.winner-show-container').classList.remove('none');
     document.querySelector('.winner-show-container .winner-team-name').textContent = teamA;
+    document.querySelector('.winner-show-container .summery-teamA').textContent = teamA +": "+ teamAScorePart +"= " + teamAScore;
+    document.querySelector('.winner-show-container .summery-teamB').textContent = teamB +": "+ teamBScorePart +"= " + teamBScore;
+    saveHistory(teamA, teamAScore, teamB, teamBScore, teamA);
   } else if (teamBScore >= winPoint) {
     document.querySelector('.score-board').classList.add('none');
     document.querySelector('.winner-show-container').classList.remove('none');
     document.querySelector('.winner-show-container .winner-team-name').textContent = teamB;
+    document.querySelector('.winner-show-container .summery-teamA').textContent = teamA +": "+ teamAScorePart +"= " + teamAScore;
+    document.querySelector('.winner-show-container .summery-teamB').textContent = teamB +": "+ teamBScorePart +"= " + teamBScore;
+    saveHistory(teamA, teamAScore, teamB, teamBScore, teamB);
   }
 }
 savePoint();
+
+document.querySelector('.history-icon').addEventListener('click', () => {
+  if (!document.querySelector('.history-container').classList.contains('open')) {
+    const history = JSON.parse(localStorage.getItem('score-board-history') || '[]');
+    const ul = document.querySelector('.history ul');
+    ul.innerHTML = '';
+    history.forEach(item => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <span class="history-team-names">
+          <span class="${item.teamA === item.winner ? 'winner-name' : 'looser-name'} ${item.winner === 'draw' && 'draw'} teamA">${item.teamA} (${item.teamAScore})</span> vs 
+          <span class="${item.teamB === item.winner ? 'winner-name' : 'looser-name'} ${item.winner === 'draw' && 'draw'} teamB">${item.teamB} (${item.teamBScore})</span> 
+        </span>
+        <span class="time">${item.currentDate}</span>`
+      ul.appendChild(li);
+    })
+    document.querySelector('.history-container').classList.add('open');
+    document.querySelector('.team-name-set-container').classList.add('none');
+  } else {
+    document.querySelector('.history-container').classList.remove('open');
+    document.querySelector('.team-name-set-container').classList.remove('none');
+  }
+})
 
 const updatePoint = (e) => {
   e.preventDefault();
@@ -124,10 +177,21 @@ const updatePoint = (e) => {
   e.target.reset();
 }
 
-const resetData = () => {
-  localStorage.removeItem('card-points');
+const resetHistory = () => {
+  localStorage.removeItem('score-board-history');
   window.location.reload();
 }
+
+const resetData = () => {
+  localStorage.removeItem('score-board');
+  window.location.reload();
+}
+
+document.querySelector('.clear-history').addEventListener('click', () => {
+  if (window.confirm("Do you really want to Clear History?")) {
+    resetHistory();
+  }
+})
 
 document.querySelector('.reset-game-btn').addEventListener('click', () => {
   if (window.confirm("Do you really want to Reset?")) {

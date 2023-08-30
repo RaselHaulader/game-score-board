@@ -10,15 +10,27 @@
 
 <body>
   <div class="form-container">
+    
     <div class="team-name-container">
-      <h2>Set Team Name</h2>
-      <div class="team-names">
-        <form onsubmit="return nameSubmit(event)">
-        <div><input class="teamA" required type="text" placeholder="Team A"></div>
-        <div><input class="teamB" required type="text" placeholder="Team b"></div>
-        <div><input class="winPoint" required type="number" placeholder="Points Need To Win"></div>
-        <button class="btn-set-team-name" type="submit">Set Team</button>
-      </form>
+      <div class="history-container">
+        <div class="history-icon-container">
+          <button class="history-icon">🕗</button>
+        </div>
+        <div class="history">
+          <ul></ul>
+          <button class="clear-history">Clear History</button>
+        </div>
+      </div>
+      <div class="team-name-set-container">
+        <h2>Set Team Name</h2>
+        <div class="team-names">
+          <form onsubmit="return nameSubmit(event)">
+          <div><input class="teamA" required type="text" placeholder="Team A"></div>
+          <div><input class="teamB" required type="text" placeholder="Team b"></div>
+          <div><input class="winPoint" required type="number" placeholder="Score Need To Win"></div>
+          <button class="btn-set-team-name" type="submit">Set Team</button>
+        </form>
+        </div>
       </div>
     </div>
 
@@ -87,9 +99,18 @@
       <button class="reset-game-btn">❌</button>
     </div>
     <div class="winner-show-container none">
-      <h1><span class="winner-team-name">Team A</span></h1>
-      <h1>is</h1>
-      <h1>Winner</h1>
+      <div class="winner-card">
+        <h1><span class="winner-team-name">Team A</span></h1>
+        <h1>is</h1>
+        <h1>Winner</h1>
+      </div>
+      <div class="summery">
+        <p><small>score</small></p>
+        <hr>
+        <div class="summery-teamA"></div>
+        <br>
+        <div class="summery-teamB"></div>
+      </div>
       <button class="reset-button">Play Again</button>
     </div>
     <p class="copyright"><small>developed by Rasel</small></p>

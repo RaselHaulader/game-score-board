@@ -79,16 +79,25 @@ button:disabled {
   display: none;
 }
 
-.team-names {
+.team-names,
+.history {
   border: 1px solid rgba(67, 172, 214, 0.74);
   border-radius: 15px;
   padding: 20px;
 }
 
-.team-name-container {
+.history {
+  padding: 10px;
+}
+
+.team-name-container,
+.history-container {
   width: 80%;
   margin: auto;
+}
 
+.history-container {
+  width: 100%;
 }
 
 .none {
@@ -187,14 +196,76 @@ button:disabled {
   border: 1px solid rgba(67, 172, 214, 0.74);
   border-radius: 10px;
   padding: 20px;
-  background-image: url('./bg.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: rgba(50, 34, 195, 0.438);
+  background: linear-gradient(50deg, rgba(34, 90, 195, 0.699) 0%, rgba(173, 45, 253, 0.712) 100%);
+}
+
+.history-icon-container {
+  text-align: right;
+  margin-right: -58px;
+  margin-top: -42px;
+}
+
+.history-icon {
+  padding: 5px;
+  background: rgba(100, 221, 237, 0.685);
+  border-radius: 50%;
+}
+
+.clear-history {
+  margin: 10px;
+}
+
+.history-container .history {
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.history-container .history li {
+  margin-bottom: 10px;
+}
+
+.history-container.open .history-icon {
+  background: rgba(237, 100, 100, 0.685);
+}
+
+.history-container.open .history {
+  opacity: 1;
+  max-height: 400px;
+  overflow: auto;
 }
 
 .teamNameA, .teamNameB {
   text-transform: capitalize;
+}
+
+.history ul {
+  list-style-type: decimal;
+  text-align: left;
+}
+
+.history .history-team-names {
+  font-size: 14px;
+}
+
+.history .time {
+  font-size: 10px;
+  color: #d9d9d9;
+}
+
+
+.history .winner-name {
+  color: rgb(82, 235, 115);
+}
+
+.history .looser-name {
+  color: rgb(255, 96, 96);
+}
+
+.history .draw {
+  color: rgb(111, 255, 176);
 }
 
 .copyright {
