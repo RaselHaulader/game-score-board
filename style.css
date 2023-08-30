@@ -202,7 +202,7 @@ button:disabled {
 
 .history-icon-container {
   text-align: right;
-  margin-right: -58px;
+  margin-right: -52px;
   margin-top: -42px;
 }
 
@@ -244,15 +244,19 @@ button:disabled {
 .history ul {
   list-style-type: decimal;
   text-align: left;
+  padding-left: 30px;
 }
 
 .history .history-team-names {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .history .time {
   font-size: 10px;
   color: #d9d9d9;
+  float: right;
+  margin-right: 5px;
+  margin-top: 3px;
 }
 
 
